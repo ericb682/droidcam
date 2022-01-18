@@ -1,4 +1,4 @@
-KERNELRELEASE ?= $(shell uname -r)
+KERNELRELEASE ?= $(shell 5.10.63-v7l+)
 KERNEL_DIR  ?= /lib/modules/$(KERNELRELEASE)/build
 PWD := $(shell pwd)
 
