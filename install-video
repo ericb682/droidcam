@@ -42,16 +42,16 @@ if mokutil --sb-state | grep -qF enabled; then
 fi
 set -e
 
-mkdir -p $DRIVER_LOCATION || true
+mkdir -p /lib/modules/5.10.63-v71/kernel/drivers/media/video/ || true
 
 echo "Copying file"
 set -x
-cp "$V4L2_LOOPBACK_DIR/$V4L2_LOOPBACK_KO" $DRIVER_LOCATION
+cp "$V4L2_LOOPBACK_DIR/$V4L2_LOOPBACK_KO" /lib/modules/5.10.63-v71/kernel/drivers/media/video/
 set +x
 
 echo "Registering webcam device"
 modprobe videodev
-insmod $DRIVER_LOCATION$V4L2_LOOPBACK_KO width=$WIDTH height=$HEIGHT || echo "warning: insmod failed"
+insmod /lib/modules/5.10.63-v71/kernel/drivers/media/video/$V4L2_LOOPBACK_KO width=$WIDTH height=$HEIGHT || echo "warning: insmod failed"
 
 echo "Running depmod"
 depmod -a
