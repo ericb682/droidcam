@@ -31,8 +31,9 @@ if mokutil --sb-state | grep -qF enabled; then
 		read -rp "Enter the path of the private key: " PRIV
 	fi
 
-	SIGNER_BIN="/usr/src/linux-headers-5.10.63-v7l/scripts/sign-file"
-	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="/usr/src/kernels/5.10.63-v7l/scripts/sign-file"
+	SIGNER_BIN="/usr/src/linux-headers-5.10.63-v7l+/scripts/sign-file"
+	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="/usr/src/kernels/
+	.63-v7l+/scripts/sign-file"
 	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="kmodsign"
 	if [[ -e "$PRIV" && -e "$PUB" ]]
 	then
@@ -42,16 +43,16 @@ if mokutil --sb-state | grep -qF enabled; then
 fi
 set -e
 
-mkdir -p /lib/modules/5.10.63-v71/kernel/drivers/media/video/ || true
+mkdir -p /lib/modules/5.10.63-v7l+/kernel/drivers/media/video/ || true
 
 echo "Copying file"
 set -x
-cp "$V4L2_LOOPBACK_DIR/$V4L2_LOOPBACK_KO" /lib/modules/5.10.63-v71/kernel/drivers/media/video/
+cp "$V4L2_LOOPBACK_DIR/$V4L2_LOOPBACK_KO" /lib/modules/5.10.63-v7l+/kernel/drivers/media/video/
 set +x
 
 echo "Registering webcam device"
-modprobe videodev --set-version 5.10.63-v71
-insmod /lib/modules/5.10.63-v71/kernel/drivers/media/video/$V4L2_LOOPBACK_KO width=$WIDTH height=$HEIGHT || echo "warning: insmod failed"
+modprobe videodev --set-version 5.10.63-v7l+
+insmod /lib/modules/5.10.63-v7l+/kernel/drivers/media/video/$V4L2_LOOPBACK_KO width=$WIDTH height=$HEIGHT || echo "warning: insmod failed"
 
 echo "Running depmod"
 depmod -a
