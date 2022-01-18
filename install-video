@@ -31,8 +31,8 @@ if mokutil --sb-state | grep -qF enabled; then
 		read -rp "Enter the path of the private key: " PRIV
 	fi
 
-	SIGNER_BIN="/usr/src/linux-headers-`uname -r`/scripts/sign-file"
-	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="/usr/src/kernels/`uname -r`/scripts/sign-file"
+	SIGNER_BIN="/usr/src/linux-headers-5.10.63-v7l/scripts/sign-file"
+	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="/usr/src/kernels/5.10.63-v7l/scripts/sign-file"
 	[ -e "$SIGNER_BIN" ] || SIGNER_BIN="kmodsign"
 	if [[ -e "$PRIV" && -e "$PUB" ]]
 	then
