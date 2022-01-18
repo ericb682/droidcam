@@ -50,7 +50,7 @@ cp "$V4L2_LOOPBACK_DIR/$V4L2_LOOPBACK_KO" /lib/modules/5.10.63-v71/kernel/driver
 set +x
 
 echo "Registering webcam device"
-modprobe videodev
+modprobe videodev --set-version 5.10.63-v71
 insmod /lib/modules/5.10.63-v71/kernel/drivers/media/video/$V4L2_LOOPBACK_KO width=$WIDTH height=$HEIGHT || echo "warning: insmod failed"
 
 echo "Running depmod"
