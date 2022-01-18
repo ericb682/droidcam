@@ -1,5 +1,4 @@
-KERNELRELEASE ?= $(shell 5.10.63-v7l+)
-KERNEL_DIR  ?= /lib/modules/$(KERNELRELEASE)/build
+KERNEL_DIR  = /lib/modules/5.10.63-v7l+/build
 PWD := $(shell pwd)
 
 obj-m := v4l2loopback-dc.o
